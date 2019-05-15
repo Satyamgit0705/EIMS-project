@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<title>Tektree EIMS </title>
+<style type="text/css">
+
+/* --------------------------------------------------------- main screen css ------------------------------------------------------------- */
+
+   input[type=text],input[type=date],input[type=email],input[type=number],input[type=month]
+         {width:180px;height:30px; border-radius: 20px;}
+#main {
+  border:2px solid black;
+   border-radius:4px;
+  height:150px ;
+  width:300px;
+  margin:10px;
+  background-color:#B5DADF;
+  float:left;
+}
+
+
+/*#1_left{width: 160px; height: 70px; background-color:#1b3135; }*/
+
+#logo{height: 2.5%; float: left; width: 9%; background-color: white;  margin-left: 0px; border-bottom: 1px solid black; }
+
+ #img_rght{width: 100%; height: 70px; background-color:#1b3135 ; } 
+
+ /* #img_rght{ float : right; background-color:#b3b3cc; height :110px ;  } */
+
+ #left_menu{width: 10%; border-right: 1px solid black; background-color: #3c4446; height: 650px; float:left; padding-top: 40px; }
+
+ #dsply_menu{float: left; background-color: #8db7c1;width: 90%;  }
+
+button{padding-top:2%; width:80%; background-color: #B6A4C1;border-radius: 10px;}
+
+a {text-decoration: none; padding : 10px; cursor:pointer; color: white; ;
+  border: 1px rounded;
+  padding: 9px 13px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;} */
+
+#icons,#img,#data,#status {padding:4px;}
+#icons{background-color:#b3b3b3;width:280px;height:30px;margin-top:8px;margin-left:8px;border-radius:4px;padding:5px; border:1px solid black;}
+#fltr::first-letter {
+	font-size: 20px; color: red; float: left;
+}
+#ltr{float: left; }	
+#frame {width: 100%; height: 300px;border: none; }
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module("myApp",[]);
+app.controller("MyCtrl",['$scope','$window','$http', function($scope,$window,$http){
+ $scope.Emp =   [{ 'Name': 'Joseph', 'Designation': 'Java Developper', 'Location': 'LA',     'Tot_Exp': '4+',   'img':'3dJletter.png' },
+                 { 'Name': 'Michel', 'Designation': 'UI Developper',   'Location': 'NJ',     'Tot_Exp': '5+',   'img':'M.jpg' },
+                 { 'Name': 'Robin',  'Designation': 'DataBase Admin',  'Location': 'HYD',    'Tot_Exp': '2+',   'img':'R.png' },
+                 { 'Name': 'Mark',   'Designation': 'IIB Developer',   'Location':'Chicago', 'Tot_Exp': '10+',  'img':'M1.png' },
+                 { 'Name': 'Gayle',  'Designation': 'Tester',          'Location': 'BNG',    'Tot_Exp':  '0 ',  'img':'G.png'},
+                 { 'Name': 'Dhoni',  'Designation': 'Cricketer',        'Location': 'RANCHI', 'Tot_Exp':  '12+', 'img':'D.png'},
+                 { 'Name': 'Sathya',  'Designation': 'Cricketer',        'Location': 'RANCHI', 'Tot_Exp':  '12+', 'img':'S.png'},
+                 { 'Name': 'Khan',  'Designation': 'Cricketer',        'Location': 'RANCHI', 'Tot_Exp':  '12+', 'img':'K.png'}]
+	
+	
+}]);
+
+</script>
+
+</head>
+<body>
+<div ng-app="myApp" ng-controller="MyCtrl">
+
+ <img style="cursor: pointer;" ng-click="ShowHide1()" id ="logo" alt="tektree-logo" src="logo.png "/>
+
+<div id="img_rght">    <select style="margin-left: 120px;margin-top: 25px; width:150px;height: 40px;">
+		      <option style="width:140px;background-color: #1b3135;color: white;" class="btn btn-primary" id="pd" ng-click="ShowHide1()">EIMS</option>
+		         <option style="width:140px;background-color: #1b3135;color: white;" class="btn btn-primary" id="ad" ng-click="ShowHide2()"> DIMS </option>
+              <option style="width:140px;background-color: #1b3135;color: white;" class="btn btn-primary" id="fd" ng-click="ShowHide3()"> PRMS</option>
+              <option style="width:140px;background-color: #1b3135;color: white;" class="btn btn-primary" id="ed" ng-click="ShowHide4()" >AR</option>
+      </select> </div>  
+
+<div id="left_menu"> <br>
+ <button ng-click="login1()">DashBoard</button> <br> <br>
+ <div ng-show="hide">
+ <button ng-click="login1()">Personal Details</button> <br> <br>
+<button ng-click="login2()">Address Details</button>   <br> <br>
+<button ng-click="login2()">Educational Details</button>  <br> <br>
+
+<button ng-click="login3()">Experience Details</button> <br> <br>
+<button ng-click="login4()">Family Details </button> 
+</div>
+</div> 
+
+<div  id="dsply_menu">
+ 
+<!--  <iframe id="frame" src="http://192.168.0.16:8050/" ></iframe> <br>  -->
+ 
+  <input type="text" placeholder= " Search for Employee" class="form-control input-sm" ng-model="name.skill"/>
+	<div style="margin-top: 20px;" >
+
+ <div class="container-fluid">
+     <div class="row">
+        <div id="main" ng-repeat="names in Emp">
+          <div id="icons" >
+           <span id="deploy" class=" btn glyphicon glyphicon-download" style="float:right;padding:0px;" ></span>
+           <span class=" btn glyphicon glyphicon-eye-open" style="float:right;padding:0px;">&nbsp&nbsp</span>
+           <span class=" btn glyphicon glyphicon-pencil" style="float:right;padding:0px;">&nbsp&nbsp</span>
+           <span class=" btn glyphicon glyphicon-bell" style="float:right;padding:0px;">&nbsp&nbsp</span><br/>
+          </div>
+          <div style="float:left;" id="img">
+            <!--  <img alt="hhh" src="Images\logo.png" height="50px" width="50px"> -->
+            <img alt="img" ng-src={{names.img}} height="50px" width="50px" style="background-color:white;margin-left: 10px;">
+          </div>
+          <div id="data" style="margin-left:80px;">
+           <div id="ltr"> <b>Name:</b> </div> <div id="fltr" > {{names.Name}} </div> <br>
+            <b>Designation:</b>{{names.Designation}}<br/>
+            <b>Exp:</b>{{names.Tot_Exp}}
+          </div>
+          <div id="status">
+             <b>&nbsp&nbsp&nbsp Status: </b>
+          </div>
+        </div>
+     </div>
+   </div>
+ 
+			</div>	
+			 <br><br>
+			
+	    </div>
+
+
+</div>	<br>
+
+<!-- --------------------------------------Populating list---------------------------------------------------------------------------------- -->
+
+
+<div id="dsply_menu" >
+      
+</div>
+
+</div>
+ 
+</body>
+</html>
